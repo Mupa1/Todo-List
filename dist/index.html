@@ -5,7 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo List</title>
 </head>
-<body>
+<body class="container-fluid p-0 m-0">
+  <header>
+    <h1 class="p-3 text-white">TODO</h1>
+  </header>
+  <main>
+    <div class="container-fluid d-flex row p-0 m-0 vh-100">
+      <div class="col-3 nav-links bg-dark">
+        <nav>
+          <ul class="text-white">
+            <li class="py-2"><a href="#" class="text-white" id="all-todos-link">Default Todos</a></li>
+            <li class="py-2"><a href="#" class="text-white" id="new-project-link">Create New Project</a></li>
+            <li class="py-2"><a href="#" class="text-white" id="new-todos-link">Create Todo List</a></li>
+          </ul>
+        </nav>
+        <div class="projects"></div>
+      </div>
+      <div class="col-9" id="content"></div>
+    </div>
+  </main>
   <script src="main.js"></script>
 </body>
 </html>
