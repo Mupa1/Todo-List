@@ -1,5 +1,11 @@
-import { todoObject } from './todo';
-import { projectObject } from './project';
+import todoObject from './todo';
+import projectObject from './project';
+import {
+  mainContent,
+  todoDetails,
+  todosContents,
+  todos,
+} from './dom';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/js/fontawesome';
@@ -13,10 +19,17 @@ const renderCurrentProject = (currentProject) => {
   allProjects.forEach((proj) => {
     if (proj === currentProject) {
       for (let i = 0; i < proj.todoList.length; i += 1) {
-        alert(proj.todoList[i].title);
-        // proj.todoList[i].description;
-        // proj.todoList[i].dueDate;
-        // proj.todoList[i].priority;
+        todoDetails.innerHTML = proj.todoList[i].title;
+
+        // alert('anything');
+        todos.appendChild(todoDetails);
+        // todosContents = proj.todoList[i].description;
+        // todos.appendChild(todosContents);
+        // todosContents = proj.todoList[i].dueDate;
+        // todos.appendChild(todosContents);
+        // todosContents = proj.todoList[i].priority;
+        // todos.appendChild(todosContents);
+        mainContent.appendChild(todos);
       }
     } else {
       alert('Not Found');

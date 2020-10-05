@@ -2,4 +2,4 @@ const todoObject = (title, description, dueDate, priority) => ({
   title, description, dueDate, priority,
 });
 
-export { todoObject };
+export default todoObject;

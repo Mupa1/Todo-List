@@ -4,4 +4,4 @@ const projectObject = (projectName) => {
   return { projectName, todoList };
 };
 
-export { projectObject };
+export default projectObject;
