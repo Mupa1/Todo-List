@@ -16,6 +16,8 @@ import {
   todoDate,
   todoPriority,
   newTodo,
+  cancelProject,
+  cancelTodo,
 } from './dom';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -135,6 +137,16 @@ createProject.onclick = (ev) => {
 
 createTodo.onclick = (ev) => {
   validateTodoInput(ev);
+};
+
+cancelProject.onclick = (ev) => {
+  ev.preventDefault();
+  domElements.hideProjectForm();
+};
+
+cancelTodo.onclick = (ev) => {
+  ev.preventDefault();
+  domElements.hideTodoForm();
 };
 
 newTodo.onclick = () => {

@@ -3,9 +3,13 @@ const mySelect = document.querySelector('#mySelect');
 const projectForm = document.querySelector('#projectForm');
 const newProjBtn = document.querySelector('#newProjBtn');
 const createProject = document.querySelector('#createProject');
+const cancelProject = document.querySelector('#cancelProject');
+
 const projectName = document.querySelector('#projectName');
 const todoForm = document.querySelector('#todoForm');
 const createTodo = document.querySelector('#createTodo');
+const cancelTodo = document.querySelector('#cancelTodo');
+
 const todoTitle = document.querySelector('#todoTitle');
 const todoDescription = document.querySelector('#todoDescription');
 const todoDate = document.querySelector('#todoDate');
@@ -61,5 +65,6 @@ export {
   todoDate,
   todoPriority,
   newTodo,
-  br,
+  cancelProject,
+  cancelTodo,
 };
