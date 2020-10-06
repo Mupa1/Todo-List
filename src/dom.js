@@ -15,6 +15,7 @@ const newTodo = document.querySelector('#newTodo');
 
 const todos = document.createElement('div');
 const todoDetails = document.createElement('p');
+const br = document.createElement('br');
 
 
 const todosContents = todoDetails.innerHTML;
@@ -28,6 +29,10 @@ const domElements = (function () {
     projectForm.style.display = "none";
   };
 
+  const hideTodoForm = () => {
+    todoForm.style.display = "none";
+  };
+
   const createTodoForm = () => {
     todoForm.style.display = "block";
   };
@@ -36,6 +41,7 @@ const domElements = (function () {
     createProjectForm,
     hideProjectForm,
     createTodoForm,
+    hideTodoForm,
   };
 }());
 
@@ -55,4 +61,5 @@ export {
   todoDate,
   todoPriority,
   newTodo,
+  br,
 };
