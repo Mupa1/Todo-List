@@ -10,8 +10,7 @@ const todoTitle = document.querySelector('#todoTitle');
 const todoDescription = document.querySelector('#todoDescription');
 const todoDate = document.querySelector('#todoDate');
 const todoPriority = document.querySelector('#todoPriority');
-
-
+const newTodo = document.querySelector('#newTodo');
 
 
 const todos = document.createElement('div');
@@ -29,9 +28,14 @@ const domElements = (function () {
     projectForm.style.display = "none";
   };
 
+  const createTodoForm = () => {
+    todoForm.style.display = "block";
+  };
+
   return {
     createProjectForm,
     hideProjectForm,
+    createTodoForm,
   };
 }());
 
@@ -50,4 +54,5 @@ export {
   todoDescription,
   todoDate,
   todoPriority,
+  newTodo,
 };

@@ -10,38 +10,51 @@
     <h1 class="p-3 text-white">TODO</h1>
   </header>
   <main>
-    <div class="container-fluid d-flex row p-0 m-0 vh-100">
-      <div class="col-3 nav-links bg-dark">
-        <nav class="mt-2">
-          <label for="mySelect" class="text-white">Select Project</label>
-          <select id="mySelect" onchange="myFunction()">
-          </select>
-          <button type="button" id="newProjBtn">Create New Project</button>
-          <button type="button" class="btn">Create Todo List</button>
+    <div class="container-fluid d-flex row p-0 m-0 main">
+      <div class="col-lg-3 col-md-4 col-sm-12 nav-links bg-dark">
+        <nav class="mt-2 pb-3">
+          <div class="form-group pb-3">
+            <label for="mySelect" class="text-white">Select Project</label>
+            <select id="mySelect" onchange="myFunction()" class="form-control"></select>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button type="button" id="newProjBtn" class="btn bg-white">Create Project</button>
+            <button type="button" id="newTodo" class="btn bg-white">Create Todo List</button>
+          </div>
         </nav>
         <div class="projects"></div>
-        <form id="projectForm" class="p-2">
-          <label for="projectName" class="text-white">Project Name</label>
-          <input type="text" id="projectName">
-          <button type="submit" id="createProject">Submit</button>
+        <form id="projectForm" class="p-2 mt-2">
+          <div class="form-group">
+            <label for="projectName" class="text-white">Project Name</label>
+            <input type="text" id="projectName" class="form-control">
+          </div>
+          <button type="submit" id="createProject" class="btn bg-white">Submit</button>
         </form>
         <form id="todoForm" class="p-2 mt-2">
-          <label for="todoTitle" class="text-white">Todo Title</label>
-          <input type="text" id="todoTitle"></br>
-          <label for="todoDescription" class="text-white">Description</label>
-          <input type="text" id="todoDescription"></br>
-          <label for="todoDate" class="text-white">Due Date</label>
-          <input type="date" id="todoDate"></br>
-          <label for="todoPriority" class="text-white">Priority</label>        
-          <select id="todoPriority">
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-          </select></br>
-          <button type="submit" id="createTodo">Submit</button>
+          <div class="form-group">
+            <label for="todoTitle" class="text-white">Todo Title</label>
+            <input type="text" id="todoTitle" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="todoDescription" class="text-white">Description</label>
+            <input type="text" id="todoDescription" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="todoDate" class="text-white">Due Date</label>
+            <input type="date" id="todoDate"  class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="todoPriority" class="text-white">Priority</label>        
+            <select id="todoPriority"  class="form-control">
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+          <button type="submit" id="createTodo" class="btn bg-white">Submit</button>
         </form>
       </div>
-      <div class="col-9" id="content"></div>
+      <div class="col-lg-9 col-md-8 col-sm-12" id="content"></div>
     </div>
   </main>
   <script src="main.js"></script>

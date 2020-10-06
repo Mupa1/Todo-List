@@ -15,13 +15,10 @@ import {
   todoDescription,
   todoDate,
   todoPriority,
+  newTodo,
 } from './dom';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '@fortawesome/fontawesome-free/js/fontawesome';
-import '@fortawesome/fontawesome-free/js/solid';
-import '@fortawesome/fontawesome-free/js/regular';
-import '@fortawesome/fontawesome-free/js/brands';
 
 const allProjects = [];
 let currentProject = '';
@@ -131,6 +128,10 @@ createProject.onclick = (ev) => {
 
 createTodo.onclick = (ev) => {
   validateTodoInput(ev);
+};
+
+newTodo.onclick = () => {
+  domElements.createTodoForm();
 };
 
 // const closeForm = () => {

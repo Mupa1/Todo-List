@@ -9,11 +9,22 @@ header {
   background-color: #5c73f2;
 }
 
+.main {
+  height: 100vh;
+}
+
 #projectForm {
   display: none;
   background-color: #5c73f2;
 }
 
 #todoForm {
+  display: none;
   background-color: #5c73f2;
+}
+
+@media only screen and (max-width: 767px) {
+  .main {
+    height: auto;
+  }
 }
