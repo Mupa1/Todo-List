@@ -5,6 +5,8 @@ import {
   todoDetails,
   todosContents,
   todos,
+  mySelect,
+
 } from './dom';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,36 +17,46 @@ import '@fortawesome/fontawesome-free/js/brands';
 
 const allProjects = [];
 
+const selectBoxOption = () => {
+  allProjects.forEach((proj) => {
+    const option = document.createElement('option');
+    option.innerHTML = proj.projectName;
+    mySelect.appendChild(option);
+  });
+};
+
 const renderCurrentProject = (currentProject) => {
   allProjects.forEach((proj) => {
-    if (proj === currentProject) {
-      for (let i = 0; i < proj.todoList.length; i += 1) {
-        todoDetails.innerHTML = proj.todoList[i].title;
-
-        // alert('anything');
-        todos.appendChild(todoDetails);
-        // todosContents = proj.todoList[i].description;
-        // todos.appendChild(todosContents);
-        // todosContents = proj.todoList[i].dueDate;
-        // todos.appendChild(todosContents);
-        // todosContents = proj.todoList[i].priority;
-        // todos.appendChild(todosContents);
-        mainContent.appendChild(todos);
-      }
-    } else {
-      alert('Not Found');
+    if (proj.projectName === currentProject) {
+      if (proj.todoList.length > 0) {
+        for (let i = 0; i < proj.todoList.length; i += 1) {
+          todoDetails.innerHTML = proj.todoList[i].title;
+          todos.appendChild(todoDetails);
+          mainContent.appendChild(todos);
+        }
+      } else {
+        todoDetails.innerHTML = '';
+      }     
     }
   });
 };
 
 const initial = () => {
-  const defaultProject = projectObject('efaultProject');
-  const defaultTodo = todoObject('myDefaultTodo', 'just for default', '05-10-2020', 1);
+  const defaultProject = projectObject('defaultProject');
+  const secondProject = projectObject('secondProject');
+  const defaultTodo = todoObject('First Todo ', 'just for default', '05-10-2020', 1);
+  const secondTodo = todoObject('Second Todo ', 'just for default', '05-10-2020', 1);
+
   defaultProject.todoList.push(defaultTodo);
+  secondProject.todoList.push(secondTodo);
+
   allProjects.push(defaultProject);
+  allProjects.push(secondProject);
   const currentProject = defaultProject;
-  renderCurrentProject(currentProject);
+  renderCurrentProject(currentProject.projectName);
+  selectBoxOption();
 };
+
 
 // const saveAllProjects = () => {
 //   const str = JSON.stringify(allProjects);
@@ -61,3 +73,7 @@ const initial = () => {
 // };
 
 initial();
+
+mySelect.onchange = () => {
+  renderCurrentProject(mySelect.value);
+};
