@@ -13,3 +13,7 @@ header {
   display: none;
   background-color: #5c73f2;
 }
+
+#todoForm {
+  background-color: #5c73f2;
+}

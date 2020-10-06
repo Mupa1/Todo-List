@@ -10,6 +10,11 @@ import {
   newProjBtn,
   createProject,
   projectName,
+  createTodo,
+  todoTitle,
+  todoDescription,
+  todoDate,
+  todoPriority,
 } from './dom';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,6 +24,7 @@ import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 
 const allProjects = [];
+let currentProject = '';
 
 const selectBoxOption = () => {
   // mySelect = '';
@@ -40,7 +46,7 @@ const renderCurrentProject = (currentProject) => {
         }
       } else {
         todoDetails.innerHTML = '';
-      }     
+      }
     }
   });
 };
@@ -56,7 +62,7 @@ const initial = () => {
 
   allProjects.push(defaultProject);
   allProjects.push(secondProject);
-  const currentProject = defaultProject;
+  currentProject = defaultProject;
   renderCurrentProject(currentProject.projectName);
   selectBoxOption();
 };
@@ -70,6 +76,17 @@ const createProjectName = (project) => {
   alert('success');
 };
 
+const createTodoObject = (title, description, dueDate, priority) => {
+  const newTodo = todoObject(title, description, dueDate, priority);
+
+  allProjects.forEach((proj) => {
+    if (proj.projectName === currentProject) {
+      proj.todoList.push(newTodo);
+      alert(proj.todoList.length);
+    }
+  });
+};
+
 const validateProjInput = (ev) => {
   ev.preventDefault();
   if (projectName.value === '') {
@@ -79,6 +96,14 @@ const validateProjInput = (ev) => {
   }
 };
 
+const validateTodoInput = (ev) => {
+  ev.preventDefault();
+  if (todoTitle.value === '') {
+    alert('Title cannot be empty');
+  } else {
+    createTodoObject(todoTitle.value, todoDescription.value, todoDate.value, todoPriority.value);
+  }
+};
 
 // const saveAllProjects = () => {
 //   const str = JSON.stringify(allProjects);
@@ -104,10 +129,15 @@ createProject.onclick = (ev) => {
   validateProjInput(ev);
 };
 
+createTodo.onclick = (ev) => {
+  validateTodoInput(ev);
+};
+
 // const closeForm = () => {
 //   document.getElementById("myForm").style.display = "none";
 // }
 
 mySelect.onchange = () => {
-  renderCurrentProject(mySelect.value);
+  currentProject = mySelect.value;
+  renderCurrentProject(currentProject);
 };

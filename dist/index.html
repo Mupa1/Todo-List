@@ -12,7 +12,7 @@
   <main>
     <div class="container-fluid d-flex row p-0 m-0 vh-100">
       <div class="col-3 nav-links bg-dark">
-        <nav>
+        <nav class="mt-2">
           <label for="mySelect" class="text-white">Select Project</label>
           <select id="mySelect" onchange="myFunction()">
           </select>
@@ -24,6 +24,21 @@
           <label for="projectName" class="text-white">Project Name</label>
           <input type="text" id="projectName">
           <button type="submit" id="createProject">Submit</button>
+        </form>
+        <form id="todoForm" class="p-2 mt-2">
+          <label for="todoTitle" class="text-white">Todo Title</label>
+          <input type="text" id="todoTitle"></br>
+          <label for="todoDescription" class="text-white">Description</label>
+          <input type="text" id="todoDescription"></br>
+          <label for="todoDate" class="text-white">Due Date</label>
+          <input type="date" id="todoDate"></br>
+          <label for="todoPriority" class="text-white">Priority</label>        
+          <select id="todoPriority">
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select></br>
+          <button type="submit" id="createTodo">Submit</button>
         </form>
       </div>
       <div class="col-9" id="content"></div>

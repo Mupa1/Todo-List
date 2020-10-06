@@ -4,6 +4,14 @@ const projectForm = document.querySelector('#projectForm');
 const newProjBtn = document.querySelector('#newProjBtn');
 const createProject = document.querySelector('#createProject');
 const projectName = document.querySelector('#projectName');
+const todoForm = document.querySelector('#todoForm');
+const createTodo = document.querySelector('#createTodo');
+const todoTitle = document.querySelector('#todoTitle');
+const todoDescription = document.querySelector('#todoDescription');
+const todoDate = document.querySelector('#todoDate');
+const todoPriority = document.querySelector('#todoPriority');
+
+
 
 
 const todos = document.createElement('div');
@@ -37,4 +45,9 @@ export {
   newProjBtn,
   createProject,
   projectName,
+  createTodo,
+  todoTitle,
+  todoDescription,
+  todoDate,
+  todoPriority,
 };
