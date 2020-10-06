@@ -8,3 +8,8 @@ header {
   height: 80px;
   background-color: #5c73f2;
 }
+
+#projectForm {
+  display: none;
+  background-color: #5c73f2;
+}

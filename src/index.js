@@ -6,7 +6,10 @@ import {
   todosContents,
   todos,
   mySelect,
-
+  domElements,
+  newProjBtn,
+  createProject,
+  projectName,
 } from './dom';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,6 +21,7 @@ import '@fortawesome/fontawesome-free/js/brands';
 const allProjects = [];
 
 const selectBoxOption = () => {
+  // mySelect = '';
   allProjects.forEach((proj) => {
     const option = document.createElement('option');
     option.innerHTML = proj.projectName;
@@ -57,6 +61,24 @@ const initial = () => {
   selectBoxOption();
 };
 
+const createProjectName = (project) => {
+  const newProject = projectObject(project);
+  allProjects.push(newProject);
+  mySelect.innerHTML = '';
+  selectBoxOption();
+  domElements.hideProjectForm();
+  alert('success');
+};
+
+const validateProjInput = (ev) => {
+  ev.preventDefault();
+  if (projectName.value === '') {
+    alert('Project cannot be empty');
+  } else {
+    createProjectName(projectName.value);
+  }
+};
+
 
 // const saveAllProjects = () => {
 //   const str = JSON.stringify(allProjects);
@@ -73,6 +95,18 @@ const initial = () => {
 // };
 
 initial();
+
+newProjBtn.onclick = () => {
+  domElements.createProjectForm();
+};
+
+createProject.onclick = (ev) => {
+  validateProjInput(ev);
+};
+
+// const closeForm = () => {
+//   document.getElementById("myForm").style.display = "none";
+// }
 
 mySelect.onchange = () => {
   renderCurrentProject(mySelect.value);

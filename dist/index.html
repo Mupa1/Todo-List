@@ -16,15 +16,14 @@
           <label for="mySelect" class="text-white">Select Project</label>
           <select id="mySelect" onchange="myFunction()">
           </select>
-          <ul class="text-white">            
-            <li class="py-2"><a href="#" class="text-white" id="new-project-link">Create New Project</a></li>
-            <li class="py-2"><a href="#" class="text-white" id="new-todos-link">Create Todo List</a></li>
-          </ul>
+          <button type="button" id="newProjBtn">Create New Project</button>
+          <button type="button" class="btn">Create Todo List</button>
         </nav>
         <div class="projects"></div>
-        <form id="projectForm">
-          <label for="projectName">Project Name</label>
+        <form id="projectForm" class="p-2">
+          <label for="projectName" class="text-white">Project Name</label>
           <input type="text" id="projectName">
+          <button type="submit" id="createProject">Submit</button>
         </form>
       </div>
       <div class="col-9" id="content"></div>
