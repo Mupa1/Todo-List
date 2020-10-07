@@ -34,6 +34,14 @@ const selectBoxOption = () => {
   });
 };
 
+const priorityBg = (priority, todoDiv) => {
+  if (priority === 'High') {
+    todoDiv.classList.add('highPriority');
+  } else if (priority === 'Low') {
+    todoDiv.classList.add('lowPriority');
+  }
+};
+
 const renderCurrentProject = (currentProject) => {
   allProjects.forEach((proj) => {
     if (proj.projectName === currentProject) {
@@ -41,6 +49,7 @@ const renderCurrentProject = (currentProject) => {
       if (proj.todoList.length > 0) {
         for (let i = 0; i < proj.todoList.length; i += 1) {
           const todoDiv = document.createElement('div');
+          priorityBg(proj.todoList[i].priority, todoDiv);
           todoDiv.classList.add('todoDiv');
           let todoString = `Title: ${proj.todoList[i].title} </br>`;
           todoString += `Desscription: ${proj.todoList[i].description} </br>`;
