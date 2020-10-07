@@ -67,8 +67,8 @@ const renderCurrentProject = (currentProject) => {
 };
 
 const initial = () => {
-  const defaultProject = projectObject('defaultProject');
-  const secondProject = projectObject('secondProject');
+  const defaultProject = projectObject('Default Project');
+  const secondProject = projectObject('Second Project');
   const defaultTodo = todoObject('First Todo ', 'just for default', '2020-10-05', 'High');
   const secondTodo = todoObject('Second Todo ', 'just for default', '2020-10-05', 'Low');
 
@@ -88,7 +88,7 @@ const createProjectName = (project) => {
   mySelect.innerHTML = '';
   selectBoxOption();
   domElements.hideProjectForm();
-  alert('success');
+  alert('Success!');
 };
 
 const createTodoObject = (title, description, dueDate, priority) => {
