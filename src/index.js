@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import todoObject from './todo';
 import projectObject from './project';
 import {
@@ -43,7 +44,7 @@ const priorityBg = (priority, todoDiv) => {
 };
 
 const renderCurrentProject = (currentProject) => {
-  if (currentProject === '') {
+  if (currentProject == '') {
     currentProject = mySelect.value;
   }
   allProjects.forEach((proj) => {
@@ -111,7 +112,7 @@ const createProjectName = (project) => {
 };
 
 const createTodoObject = (title, description, dueDate, priority) => {
-  if (currentProject === '') {
+  if (currentProject == '') {
     createProjectName('Default Project');
   }
 
@@ -174,10 +175,9 @@ const editTodoObject = () => {
   domElements.hideTodoForm();
   allProjects.forEach((proj) => {
     if (proj.projectName === currentProject) {
-      // eslint-disable-next-line max-len
       const editedTodo = todoObject(todoTitle.value, todoDescription.value, todoDate.value, todoPriority.value);
       proj.todoList[currentTodo] = editedTodo;
-      const objIndex = allProjects.findIndex((obj => obj.projectName === currentProject));
+      const objIndex = allProjects.findIndex((obj => obj.projectName == currentProject));
       allProjects[objIndex] = proj;
       saveAllProjects();
       renderCurrentProject(currentProject);
@@ -186,9 +186,9 @@ const editTodoObject = () => {
 };
 
 const btnListner = (targetBtn) => {
-  if (targetBtn.classList === 'editBtn') {
+  if (targetBtn.classList == 'editBtn') {
     showEditTodoForm(targetBtn);
-  } else if (targetBtn.classList === 'deleteBtn') {
+  } else if (targetBtn.classList == 'deleteBtn') {
     deleteTodo(targetBtn);
   }
 };
