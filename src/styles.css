@@ -22,6 +22,7 @@ header {
   display: none;
   background-color: #5c73f2;
 }
+
 .todoDiv {
   margin-top: 30px;
   margin-bottom: 10px;
@@ -36,6 +37,15 @@ header {
 
 .lowPriority {
   background-color: rgb(129, 241, 163);
+}
+
+.editBtn,
+.deleteBtn {
+  background-color: #fff;
+  margin: 10px 10px 0 0;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10%;
 }
 
 @media only screen and (max-width: 767px) {

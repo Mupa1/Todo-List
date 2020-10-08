@@ -17,9 +17,11 @@ const todoPriority = document.querySelector('#todoPriority');
 const newTodo = document.querySelector('#newTodo');
 
 
+
 const todos = document.createElement('div');
 const todoDetails = document.createElement('p');
-const br = document.createElement('br');
+
+
 
 
 const todosContents = todoDetails.innerHTML;

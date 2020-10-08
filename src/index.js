@@ -52,10 +52,18 @@ const renderCurrentProject = (currentProject) => {
           priorityBg(proj.todoList[i].priority, todoDiv);
           todoDiv.classList.add('todoDiv');
           let todoString = `Title: ${proj.todoList[i].title} </br>`;
-          todoString += `Desscription: ${proj.todoList[i].description} </br>`;
+          todoString += `Description: ${proj.todoList[i].description} </br>`;
           todoString += `Due Date: ${proj.todoList[i].dueDate} </br>`;
           todoString += `Priority: ${proj.todoList[i].priority} </br>`;
           todoDiv.innerHTML = todoString;
+          const editBtn = document.createElement('button');
+          const deleteBtn = document.createElement('button');
+          editBtn.innerHTML = 'Edit';
+          deleteBtn.innerHTML = 'Delete';
+          editBtn.classList.add('editBtn');
+          deleteBtn.classList.add('deleteBtn');
+          todoDiv.appendChild(editBtn);
+          todoDiv.appendChild(deleteBtn);
           todos.appendChild(todoDiv);
           mainContent.appendChild(todos);
         }
