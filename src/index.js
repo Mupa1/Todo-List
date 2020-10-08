@@ -3,7 +3,6 @@ import projectObject from './project';
 import {
   mainContent,
   todoDetails,
-  todosContents,
   todos,
   mySelect,
   domElements,
@@ -23,11 +22,11 @@ import {
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const allProjects = [];
+let allProjects = [];
 let currentProject = '';
+let currentTodo = '';
 
 const selectBoxOption = () => {
-  // mySelect = '';
   allProjects.forEach((proj) => {
     const option = document.createElement('option');
     option.innerHTML = proj.projectName;
@@ -44,6 +43,9 @@ const priorityBg = (priority, todoDiv) => {
 };
 
 const renderCurrentProject = (currentProject) => {
+  if (currentProject == "") {
+    currentProject = mySelect.value;
+  }
   allProjects.forEach((proj) => {
     if (proj.projectName === currentProject) {
       todos.innerHTML = '';
@@ -77,36 +79,45 @@ const renderCurrentProject = (currentProject) => {
   });
 };
 
+const saveAllProjects = () => {
+  const str = JSON.stringify(allProjects);
+  localStorage.setItem('allProjects', str);
+};
+
+const getTodos = () => {
+  const str = localStorage.getItem('allProjects');
+  allProjects = JSON.parse(str);
+  if (!allProjects) {
+    allProjects = [];
+  }
+};
+
 const initial = () => {
-  const defaultProject = projectObject('Default Project');
-  const secondProject = projectObject('Second Project');
-  const defaultTodo = todoObject('First Todo ', 'just for default', '2020-10-05', 'High');
-  const secondTodo = todoObject('Second Todo ', 'just for default', '2020-10-05', 'Low');
-
-  defaultProject.todoList.push(defaultTodo);
-  secondProject.todoList.push(secondTodo);
-
-  allProjects.push(defaultProject);
-  allProjects.push(secondProject);
-  currentProject = defaultProject.projectName;
-  renderCurrentProject(currentProject);
+  getTodos();
   selectBoxOption();
+  renderCurrentProject(currentProject);  
 };
 
 const createProjectName = (project) => {
   const newProject = projectObject(project);
   allProjects.push(newProject);
+  saveAllProjects();
   mySelect.innerHTML = '';
   selectBoxOption();
   domElements.hideProjectForm();
-  alert('Success!');
+  currentProject = mySelect.value;
 };
 
 const createTodoObject = (title, description, dueDate, priority) => {
+  if (currentProject == '') {
+    createProjectName('Default Project');    
+  }
+
   const newTodo = todoObject(title, description, dueDate, priority);
   allProjects.forEach((proj) => {
     if (proj.projectName === currentProject) {
       proj.todoList.push(newTodo);
+      saveAllProjects();
       renderCurrentProject(currentProject);
       domElements.hideTodoForm();
     }
@@ -135,6 +146,7 @@ const deleteTodo = (target) => {
   allProjects.forEach((proj) => {
     if (proj.projectName === currentProject) {
       proj.todoList.splice(target.value, 1);
+      saveAllProjects();
       renderCurrentProject(currentProject);
     }
   });
@@ -150,6 +162,23 @@ const showEditTodoForm = (target) => {
       todoDescription.value = temp.description;
       todoDate.value = temp.dueDate;
       todoPriority.value = temp.priority;
+      currentTodo = target.value;
+
+    }
+  });
+};
+
+const editTodoObject = () => {
+  domElements.showCreateTodo();
+  domElements.hideTodoForm();
+  allProjects.forEach((proj) => {
+    if (proj.projectName === currentProject) {
+      const editedTodo = todoObject(todoTitle.value, todoDescription.value, todoDate.value, todoPriority.value);
+      proj.todoList[currentTodo] = editedTodo;
+      const objIndex = allProjects.findIndex((obj => obj.projectName == currentProject));
+      allProjects[objIndex] = proj;
+      saveAllProjects();
+      renderCurrentProject(currentProject);
     }
   });
 };
@@ -161,20 +190,6 @@ const btnListner = (targetBtn) => {
     deleteTodo(targetBtn);
   }
 };
-
-// const saveAllProjects = () => {
-//   const str = JSON.stringify(allProjects);
-//   localStorage.setItem('allProjects', str);
-// };
-
-// // Get data from local storage
-// const getTodos = () => {
-//   const str = localStorage.getItem('allProjects');
-//   allProjects = JSON.parse(str);
-//   if (!allProjects) {
-//     allProjects = [];
-//   }
-// };
 
 initial();
 
@@ -203,8 +218,7 @@ cancelTodo.onclick = (ev) => {
 
 editTodo.onclick = (ev) => {
   ev.preventDefault();
-  domElements.showCreateTodo();
-  domElements.hideTodoForm();
+  editTodoObject();
 };
 
 newTodo.onclick = () => {
