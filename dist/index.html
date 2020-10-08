@@ -22,14 +22,16 @@
             <button type="button" id="newTodo" class="btn bg-white">Create Todo List</button>
           </div>
         </nav>
-        <div class="projects"></div>
+        <div id="errorMsgs"></div>
         <form id="projectForm" class="p-2 mt-2">
           <div class="form-group">
             <label for="projectName" class="text-white">Project Name</label>
             <input type="text" id="projectName" class="form-control">
           </div>
-          <button type="submit" id="createProject" class="btn bg-white">Submit</button>
-          <button type="submit" id="cancelProject" class="btn bg-white">Cancel</button>
+          <div class="d-flex justify-content-between">
+            <button type="submit" id="createProject" class="btn bg-white">Submit</button>
+            <button type="submit" id="cancelProject" class="btn bg-white">Cancel</button>
+          </div>
         </form>
         <form id="todoForm" class="p-2 mt-2">
           <div class="form-group">

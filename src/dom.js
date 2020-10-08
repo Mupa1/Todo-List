@@ -17,31 +17,28 @@ const todoPriority = document.querySelector('#todoPriority');
 const newTodo = document.querySelector('#newTodo');
 const deleteTodo = document.getElementsByClassName('deleteBtn');
 const editTodo = document.querySelector('#editTodo');
-
+const errorMsgs = document.querySelector('#errorMsgs');
 
 const todos = document.createElement('div');
 const todoDetails = document.createElement('p');
 
-
-
-
 const todosContents = todoDetails.innerHTML;
 
-const domElements = (function () {
+const domElements = (() => {
   const createProjectForm = () => {
-    projectForm.style.display = "block";
+    projectForm.style.display = 'block';
   };
 
   const hideProjectForm = () => {
-    projectForm.style.display = "none";
+    projectForm.style.display = 'none';
   };
 
   const hideTodoForm = () => {
-    todoForm.style.display = "none";
+    todoForm.style.display = 'none';
   };
 
   const createTodoForm = () => {
-    todoForm.style.display = "block";
+    todoForm.style.display = 'block';
   };
 
   const hideCreateTodo = () => {
@@ -54,6 +51,14 @@ const domElements = (function () {
     editTodo.style.display = 'none';
   };
 
+  const errorMsgsAlert = (msg) => {
+    errorMsgs.innerHTML = msg;
+  };
+
+  const removeMsg = () => {
+    errorMsgs.innerHTML = '';
+  };
+
   return {
     createProjectForm,
     hideProjectForm,
@@ -61,8 +66,10 @@ const domElements = (function () {
     hideTodoForm,
     hideCreateTodo,
     showCreateTodo,
+    errorMsgsAlert,
+    removeMsg,
   };
-}());
+})();
 
 export {
   mainContent,

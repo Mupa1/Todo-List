@@ -52,6 +52,10 @@ header {
   display: none;
 }
 
+#errorMsgs {
+  color: red;
+}
+
 @media only screen and (max-width: 767px) {
   .main {
     height: auto;

@@ -43,11 +43,12 @@ const priorityBg = (priority, todoDiv) => {
 };
 
 const renderCurrentProject = (currentProject) => {
-  if (currentProject == "") {
+  if (currentProject === '') {
     currentProject = mySelect.value;
   }
   allProjects.forEach((proj) => {
     if (proj.projectName === currentProject) {
+      domElements.removeMsg();
       todos.innerHTML = '';
       if (proj.todoList.length > 0) {
         for (let i = 0; i < proj.todoList.length; i += 1) {
@@ -95,13 +96,14 @@ const getTodos = () => {
 const initial = () => {
   getTodos();
   selectBoxOption();
-  renderCurrentProject(currentProject);  
+  renderCurrentProject(currentProject);
 };
 
 const createProjectName = (project) => {
   const newProject = projectObject(project);
   allProjects.push(newProject);
   saveAllProjects();
+  domElements.errorMsgsAlert('PROJECT CREATED SUCCESSFULLY!');
   mySelect.innerHTML = '';
   selectBoxOption();
   domElements.hideProjectForm();
@@ -109,8 +111,8 @@ const createProjectName = (project) => {
 };
 
 const createTodoObject = (title, description, dueDate, priority) => {
-  if (currentProject == '') {
-    createProjectName('Default Project');    
+  if (currentProject === '') {
+    createProjectName('Default Project');
   }
 
   const newTodo = todoObject(title, description, dueDate, priority);
@@ -127,7 +129,7 @@ const createTodoObject = (title, description, dueDate, priority) => {
 const validateProjInput = (ev) => {
   ev.preventDefault();
   if (projectName.value === '') {
-    alert('Project cannot be empty');
+    domElements.errorMsgsAlert('PROJECT CANNOT BE EMPTY!');
   } else {
     createProjectName(projectName.value);
   }
@@ -136,7 +138,7 @@ const validateProjInput = (ev) => {
 const validateTodoInput = (ev) => {
   ev.preventDefault();
   if (todoTitle.value === '') {
-    alert('Title cannot be empty');
+    domElements.errorMsgsAlert('TITLE CANNOT BE EMPTY!');
   } else {
     createTodoObject(todoTitle.value, todoDescription.value, todoDate.value, todoPriority.value);
   }
@@ -163,7 +165,6 @@ const showEditTodoForm = (target) => {
       todoDate.value = temp.dueDate;
       todoPriority.value = temp.priority;
       currentTodo = target.value;
-
     }
   });
 };
@@ -173,9 +174,10 @@ const editTodoObject = () => {
   domElements.hideTodoForm();
   allProjects.forEach((proj) => {
     if (proj.projectName === currentProject) {
+      // eslint-disable-next-line max-len
       const editedTodo = todoObject(todoTitle.value, todoDescription.value, todoDate.value, todoPriority.value);
       proj.todoList[currentTodo] = editedTodo;
-      const objIndex = allProjects.findIndex((obj => obj.projectName == currentProject));
+      const objIndex = allProjects.findIndex((obj => obj.projectName === currentProject));
       allProjects[objIndex] = proj;
       saveAllProjects();
       renderCurrentProject(currentProject);
@@ -184,9 +186,9 @@ const editTodoObject = () => {
 };
 
 const btnListner = (targetBtn) => {
-  if (targetBtn.classList == 'editBtn') {
+  if (targetBtn.classList === 'editBtn') {
     showEditTodoForm(targetBtn);
-  } else if (targetBtn.classList == 'deleteBtn') {
+  } else if (targetBtn.classList === 'deleteBtn') {
     deleteTodo(targetBtn);
   }
 };
