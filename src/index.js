@@ -62,6 +62,8 @@ const renderCurrentProject = (currentProject) => {
           deleteBtn.innerHTML = 'Delete';
           editBtn.classList.add('editBtn');
           deleteBtn.classList.add('deleteBtn');
+          editBtn.value = i;
+          deleteBtn.value = i;
           todoDiv.appendChild(editBtn);
           todoDiv.appendChild(deleteBtn);
           todos.appendChild(todoDiv);
@@ -128,6 +130,25 @@ const validateTodoInput = (ev) => {
   }
 };
 
+const deleteTodo = (target) => {
+  allProjects.forEach((proj) => {
+    if (proj.projectName === currentProject) {
+      proj.todoList.splice(target.value, 1);
+      renderCurrentProject(currentProject);
+    }
+  });
+};
+
+const btnListner = (targetBtn) => {  
+  alert(targetBtn.classList);
+  if (targetBtn.classList == 'editBtn') {
+    alert("edit todo");
+  } else if (targetBtn.classList == 'deleteBtn') {
+    alert("delete todo");
+    deleteTodo(targetBtn);
+  }
+};
+
 // const saveAllProjects = () => {
 //   const str = JSON.stringify(allProjects);
 //   localStorage.setItem('allProjects', str);
@@ -169,6 +190,10 @@ cancelTodo.onclick = (ev) => {
 newTodo.onclick = () => {
   domElements.createTodoForm();
 };
+
+todos.addEventListener('click', (e) => {
+  btnListner(e.target);
+});
 
 mySelect.onchange = () => {
   currentProject = mySelect.value;

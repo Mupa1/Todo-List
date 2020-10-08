@@ -15,7 +15,7 @@ const todoDescription = document.querySelector('#todoDescription');
 const todoDate = document.querySelector('#todoDate');
 const todoPriority = document.querySelector('#todoPriority');
 const newTodo = document.querySelector('#newTodo');
-
+const deleteTodo = document.getElementsByClassName('deleteBtn');
 
 
 const todos = document.createElement('div');
@@ -69,4 +69,5 @@ export {
   newTodo,
   cancelProject,
   cancelTodo,
+  deleteTodo,
 };
