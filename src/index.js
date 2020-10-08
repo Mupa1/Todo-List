@@ -18,6 +18,7 @@ import {
   newTodo,
   cancelProject,
   cancelTodo,
+  editTodo,
 } from './dom';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -139,12 +140,24 @@ const deleteTodo = (target) => {
   });
 };
 
-const btnListner = (targetBtn) => {  
-  alert(targetBtn.classList);
+const showEditTodoForm = (target) => {
+  domElements.createTodoForm();
+  domElements.hideCreateTodo();
+  allProjects.forEach((proj) => {
+    if (proj.projectName === currentProject) {
+      const temp = proj.todoList[target.value];
+      todoTitle.value = temp.title;
+      todoDescription.value = temp.description;
+      todoDate.value = temp.dueDate;
+      todoPriority.value = temp.priority;
+    }
+  });
+};
+
+const btnListner = (targetBtn) => {
   if (targetBtn.classList == 'editBtn') {
-    alert("edit todo");
+    showEditTodoForm(targetBtn);
   } else if (targetBtn.classList == 'deleteBtn') {
-    alert("delete todo");
     deleteTodo(targetBtn);
   }
 };
@@ -184,6 +197,13 @@ cancelProject.onclick = (ev) => {
 
 cancelTodo.onclick = (ev) => {
   ev.preventDefault();
+  domElements.hideTodoForm();
+  domElements.showCreateTodo();
+};
+
+editTodo.onclick = (ev) => {
+  ev.preventDefault();
+  domElements.showCreateTodo();
   domElements.hideTodoForm();
 };
 

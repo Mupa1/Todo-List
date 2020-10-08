@@ -48,6 +48,10 @@ header {
   border-radius: 10%;
 }
 
+#editTodo {
+  display: none;
+}
+
 @media only screen and (max-width: 767px) {
   .main {
     height: auto;

@@ -16,6 +16,7 @@ const todoDate = document.querySelector('#todoDate');
 const todoPriority = document.querySelector('#todoPriority');
 const newTodo = document.querySelector('#newTodo');
 const deleteTodo = document.getElementsByClassName('deleteBtn');
+const editTodo = document.querySelector('#editTodo');
 
 
 const todos = document.createElement('div');
@@ -43,11 +44,23 @@ const domElements = (function () {
     todoForm.style.display = "block";
   };
 
+  const hideCreateTodo = () => {
+    createTodo.style.display = 'none';
+    editTodo.style.display = 'block';
+  };
+
+  const showCreateTodo = () => {
+    createTodo.style.display = 'block';
+    editTodo.style.display = 'none';
+  };
+
   return {
     createProjectForm,
     hideProjectForm,
     createTodoForm,
     hideTodoForm,
+    hideCreateTodo,
+    showCreateTodo,
   };
 }());
 
@@ -70,4 +83,5 @@ export {
   cancelProject,
   cancelTodo,
   deleteTodo,
+  editTodo,
 };
