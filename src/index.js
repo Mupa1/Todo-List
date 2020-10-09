@@ -175,6 +175,7 @@ const editTodoObject = () => {
   domElements.hideTodoForm();
   allProjects.forEach((proj) => {
     if (proj.projectName === currentProject) {
+      // eslint-disable-next-line max-len
       const editedTodo = todoObject(todoTitle.value, todoDescription.value, todoDate.value, todoPriority.value);
       proj.todoList[currentTodo] = editedTodo;
       const objIndex = allProjects.findIndex((obj => obj.projectName == currentProject));
